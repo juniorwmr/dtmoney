@@ -1,6 +1,6 @@
 import { Container } from "./style";
 
-import { useTransactionsContext } from "../../TransactionsContext";
+import { useTransactionsContext } from "../hooks/TransactionsContext";
 
 export function TransactionsTable() {
   const { transactions } = useTransactionsContext();

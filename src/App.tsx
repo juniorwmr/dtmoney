@@ -4,7 +4,7 @@ import { Header } from "./components/Header";
 import { NewTransactionModal } from "./components/NewTransactionModal";
 
 import { GlobalStyle } from "./styles/global";
-import { TransactionsContextProvider } from "./TransactionsContext";
+import { TransactionsContextProvider } from "./components/hooks/TransactionsContext";
 
 export function App() {
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =

@@ -6,7 +6,7 @@ import outcomeImg from "../../assets/outcome.svg";
 import { Container, TransactionTypeContainer, RadioBox } from "./style";
 
 import { api } from "../../services/api";
-import { useTransactionsContext } from "../../TransactionsContext";
+import { useTransactionsContext } from "../hooks/TransactionsContext";
 
 Modal.setAppElement("#root"); // recomendação
 
