@@ -6,6 +6,7 @@ import outcomeImg from "../../assets/outcome.svg";
 import { Container, TransactionTypeContainer, RadioBox } from "./style";
 
 import { api } from "../../services/api";
+import { useTransactionsContext } from "../../TransactionsContext";
 
 Modal.setAppElement("#root"); // recomendação
 
@@ -20,6 +21,8 @@ export function NewTransactionModal({
   onRequestClose,
   ariaHideApp,
 }: INewTransactionModalProps) {
+  const { transactions, createTransaction } = useTransactionsContext();
+
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
@@ -33,17 +36,11 @@ export function NewTransactionModal({
     setType("withdraw");
   }
 
-  function handleCreateNewTransaction(event: React.FormEvent) {
+  async function handleCreateNewTransaction(event: React.FormEvent) {
     event.preventDefault();
 
-    const data = {
-      title,
-      amount,
-      category,
-      type,
-    };
-
-    api.post("/transactions", data);
+    const status = await createTransaction({ title, amount, category, type });
+    if (status === 201) onRequestClose();
   }
 
   return (
